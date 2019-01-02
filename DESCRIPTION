@@ -1,0 +1,17 @@
+Package: Requires
+Type: Package
+Title: Obtain Lists Of Package Requirements From R Scripts
+Version: 0.1.0
+Author: David Mas-Ponte
+Maintainer: David Mas-Ponte <me@davidmasp.com>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    available,
+    purrr,
+    stringr
+Depends: 
+    magrittr
