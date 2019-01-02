@@ -20,7 +20,7 @@ locate_pkg <- function(pkg_vec){
 
 write_requires_simple <- function(pkg_df,prefix,priorities){
 
-  sel = apply(res[,priorities], 1, function(y){min(which(y))})
+  sel = apply(pkg_df[,priorities], 1, function(y){min(which(y))})
 
   for (i in 1:length(priorities)){
     vec = pkg_df[sel == i,"name"]

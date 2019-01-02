@@ -16,7 +16,8 @@ Imports:
     devtools,
     readr,
     glue,
-    fs
+    fs,
+    BiocManager
 Depends: 
     magrittr
 RoxygenNote: 6.1.1
