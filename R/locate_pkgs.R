@@ -47,7 +47,3 @@ write_requires <- function(pkg_df,
   )
 }
 
-
-# if (!requireNamespace("BiocManager", quietly = TRUE))
-#   install.packages("BiocManager")
-# BiocManager::install("stringr", version = "3.8")
