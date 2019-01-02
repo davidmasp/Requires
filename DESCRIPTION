@@ -12,7 +12,11 @@ LazyData: true
 Imports: 
     available,
     purrr,
-    stringr
+    stringr,
+    devtools,
+    readr,
+    glue,
+    fs
 Depends: 
     magrittr
 RoxygenNote: 6.1.1
