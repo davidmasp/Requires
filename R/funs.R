@@ -9,6 +9,7 @@ get_deps_lib <- function(lines){
   return(dep1)
 }
 #library(VariantAnnotation)
+#library(jhdfbdjhb)
 get_deps_colon <- function(lines){
   dep2 = lines %>% purrr::map(stringr::str_extract,
                               pattern = "(?<=[:punct:])[:alnum:]+(?=::)") %>%
