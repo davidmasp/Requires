@@ -1,5 +1,6 @@
 # Requires
 
+[![Travis build status](https://travis-ci.org/davidmasp/Requires.svg?branch=master)](https://travis-ci.org/davidmasp/Requires)
 
 ## Installation
 
