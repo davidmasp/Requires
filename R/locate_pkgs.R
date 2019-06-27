@@ -13,7 +13,8 @@ locate_pkg <- function(pkg_vec){
                cran = cran,
                bioc = bioc,
                github = github,
-               version = as.character(version))
+               version = as.character(version),
+               stringsAsFactors = FALSE)
   })
 }
 
