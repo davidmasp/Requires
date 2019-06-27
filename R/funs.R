@@ -1,4 +1,9 @@
 
+
+remove_comented_lines <- function(lines){
+  lines %>% stringr::str_split("#") %>% purrr::map_chr(1)
+}
+
 get_deps_lib <- function(lines){
   dep1 = lines %>% purrr::map(stringr::str_extract,
                               pattern = "(?<=library\\()[:alnum:]+(?=\\))") %>%
