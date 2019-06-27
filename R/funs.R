@@ -41,8 +41,32 @@ get_deps_colon <- function(lines){
 #' @export
 #'
 #' @examples
-get_deps <- function(file){
-  lines = readLines(file)
+get_deps <- function(path = ".",
+                     filename = NULL,
+                     glob = "*.R",
+                     recursive = TRUE,
+                     inComments = FALSE){
+  # this should make this work with single and multiple files, basically
+  # the glob is simply the file name.
+
+  # fs::dir_ls(regexp = utils::glob2rx("R/*.R"),
+  #            recursive = TRUE)
+  if (is.null(filename)){
+    files = fs::dir_ls(path = path,
+                       glob = glob,
+                       recursive = recursive)
+  } else {
+    files <- file.path(path, filename)
+  }
+
+  lines = purrr::map(files,readLines) %>%
+    magrittr::set_names(NULL) %>%
+    unlist()
+  # should I mantain files separated?
+
+  if (!inComments){
+    lines = remove_comented_lines(lines)
+  }
 
   dependencies = c(get_deps_lib(lines),
                    get_deps_colon(lines))
