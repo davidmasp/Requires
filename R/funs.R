@@ -16,18 +16,35 @@ get_deps_lib <- function(lines){
 #library(VariantAnnotation)
 #library(jhdfbdjhb)
 get_deps_colon <- function(lines){
-  dep2 = lines %>% purrr::map(stringr::str_extract,
-                              pattern = "(?<=[:punct:])[:alnum:]+(?=::)") %>%
-    purrr::keep(~!is.na(.)) %>%
-    unlist() %>%
-    unique()
+  #p1 = "(?<=[:punct:])[:alnum:]+(?=::)" #!base::is.na()
+  # one below shouls also capture this
+  p2 = "(?<=[\\?|\\!])[:graph:]+(?=::)" #!test.test::is.na()
+  p3 = "(?<=[:blank:])[:graph:]+(?=::)" #
+  p4 = "^[:graph:]+(?=::)"
 
-  dep3 = lines %>% purrr::map(stringr::str_extract,
-                              pattern = "(?<=[:blank:])[:alnum:]+(?=::)") %>%
-    purrr::keep(~!is.na(.)) %>%
-    unlist() %>%
-    unique()
-  return(c(dep2,dep3))
+  lines %>% purrr::map(function(x){
+    #d1 = stringr::str_extract_all(string = x,pattern = p1,simplify = TRUE)
+    d2 = stringr::str_extract_all(string = x,pattern = p2,simplify = TRUE)
+    d3 = stringr::str_extract_all(string = x,pattern = p3,simplify = TRUE)
+    d4 = stringr::str_extract_all(string = x,pattern = p4,simplify = TRUE)
+
+    candidates = c(#d1,
+                   d2,
+                   d3,
+                   d4)
+
+    candidates = candidates[!is.na(candidates) & nchar(candidates) != 0]
+    if (length(candidates)!=1){
+      mssg = glue::glue("More than one package per line, check if okay:
+                 {candidates}
+                        ")
+      warning(mssg)
+    }
+
+    return(candidates)
+  }) %>% unlist() -> candidates
+
+  return(candidates)
 }
 
 #' Get dependencies
