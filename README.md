@@ -1,3 +1,7 @@
+## DEPRECATED
+
+Note: I think [rvest and dependencies can handle this better.](https://rstudio.github.io/renv/reference/dependencies.html)
+
 # Requires
 
 [![Travis build status](https://travis-ci.org/davidmasp/Requires.svg?branch=master)](https://travis-ci.org/davidmasp/Requires)
